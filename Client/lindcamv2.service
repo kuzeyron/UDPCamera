@@ -1,0 +1,22 @@
+
+[Unit]
+Description=LindCamV2
+DefaultDependencies=no
+Wants=network-online.target
+After=network.target network-online.target
+StartLimitInterval=200
+StartLimitBurst=5
+
+[Service]
+Type=idle
+WorkingDirectory=/home/lindstrom/Camera
+ExecStart=startx
+User=root
+Restart=always
+RestartSec=30
+
+# disallow writing to /usr, /bin, /sbin, ...
+ProtectSystem=yes
+
+[Install]
+WantedBy=multi-user.target
